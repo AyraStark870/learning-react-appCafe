@@ -54,15 +54,15 @@ export const Carrito = ({carrito, setearCarrito}) => {
 
 
         <div style={{...styles.carro, padding:'8px 13px'}}>
-          <i class="fas fa-dollar-sign"></i> {` ${cantidadmoney}`}
+          <i className="fas fa-dollar-sign"></i> {` ${cantidadmoney}`}
           </div>
 
         <button onClick={mostrarCarrito} style={styles.carro}>
-          <i class="fas fa-shopping-cart"></i>
+          <i className="fas fa-shopping-cart"></i>
         </button>
         {carroVisible && <DetallesCarro carrito={carrito} />}
 
-        <button style={styles.carro} onClick={setearCarrito}><i class="fas fa-trash"> </i></button>
+        <button style={styles.carro} onClick={setearCarrito}><i className="fas fa-trash"> </i></button>
       </div>
     </div>
 

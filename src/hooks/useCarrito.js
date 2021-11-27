@@ -40,6 +40,5 @@ export const useCarritoCompras = () => {
     }
 
 
-
   return { aumentarCarrito, decrementarCarrito,carrito, setearCarrito}
 }

@@ -67,7 +67,7 @@ img{
   margin-right: 1px;
   display: inline;
 }
-button{
+btn{
   border-radius: 6px;
   border: none;
   margin: 5px;
@@ -83,11 +83,53 @@ button{
    transition: all 0.25s;
 
 }
-button:hover{
+btn:hover{
     color: black;
     background-color: #FFBC97;
 
 }
 form label{
   font-size: 10px;
+}
+
+/** Formularios **/
+form {
+    width:95%;
+    max-width: 800px;
+    margin: 4rem auto 0 auto;
+}
+form legend {
+    font-size: 2.4rem;
+    color: var(--azul);
+    font-family: var(--fontTexto);
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+form .campo {
+    padding: .5rem 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+form .campo label {
+    font-weight: bold;
+    font-family: var(--fontTexto);
+    flex: 0 0 100px;
+}
+form .campo input:not([type="submit"]){
+    padding: 1.5rem;
+    flex: 1;
+    border: 1px solid #e1e1e1;
+}
+form .campo input[readonly] {
+    background-color: #e1e1e1;
+}
+.enviar {
+    padding: .5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
 }

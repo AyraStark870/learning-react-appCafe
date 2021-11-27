@@ -1,7 +1,8 @@
 
 import {Link } from "react-router-dom";
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Carrito } from "./Carrito";
+import { CRMContext } from '../../context/CRMContext';
 
 const styles = {
   div: {
@@ -54,16 +55,24 @@ const styles = {
 export const Navegacion = ({ carrito, setearCarrito}) => {
   const [pagina, setPagina] = useState('Inicio')
 
+  const [auth, guardarAuth] = useContext(CRMContext);
+
+
+
   const cambiarPag = (e) => {
     setPagina(e.target.name)
   }
 
   return (
     <>
+    {auth.auth &&
+     <div>
       <div style={styles.div}>
         <nav style={styles.navbar}>
-          <Link style={pagina !== 'Inicio' ? styles.link : styles.linkAct}
-            name='Inicio' onClick={cambiarPag} to="/">Inicio</Link>
+          {/* <Link style={pagina !== 'Inicio' ? styles.link : styles.linkAct}
+            name='Inicio' onClick={cambiarPag} to="/">Inicio</Link> */}
+          <Link style={pagina !== 'Usuario' ? styles.link : styles.linkAct}
+            name='Usuario' onClick={cambiarPag} to="/">Ingresar</Link>
           <Link style={pagina === 'Cafes' ? styles.linkAct : styles.link}
             name='Cafes' onClick={cambiarPag} to="/cafes">Cafes</Link>
           <Link style={pagina !== 'Pasteles' ? styles.link : styles.linkAct}
@@ -73,9 +82,10 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
       <div style={styles.divCarrito}>
 
         <Carrito carrito={carrito} setearCarrito={setearCarrito} />
-        {/* carroVisible={carroVisible} mostrarCarrito={mostrarCarrito}
-          carrito={carrito} vaciarCarrito={vaciarCarrito}  */}
+
+       </div>
       </div>
+      }
     </>
 
   )
