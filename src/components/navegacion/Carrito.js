@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { BubbleAlert } from './BubbleAlert'
 import { DetallesCarro } from './DetallesCarro'
+import { CRMContext } from '../../context/CRMContext';
 
 const styles = {
   div: {
@@ -31,6 +32,8 @@ const styles = {
 }
 export const Carrito = ({carrito, setearCarrito}) => {
 
+  const [auth, guardarAuth] = useContext(CRMContext);
+  console.log('desde carrito, ', auth);
   const [carroVisible, setcarroVisible] = useState(false)
 
 
@@ -44,18 +47,19 @@ export const Carrito = ({carrito, setearCarrito}) => {
 
 
   return (
-
-    <div style={styles.tieso}>
-      {cantidadItems > 0 &&
+    <div >
+      {auth.auth &&
+        <div style={styles.tieso}>
+        { cantidadItems > 0 &&
         <span style={styles.bubble}>
           <BubbleAlert cantidadItems={cantidadItems} />
         </span>}
       <div style={styles.div} >
 
 
-        <div style={{...styles.carro, padding:'8px 13px'}}>
+        <div style={{ ...styles.carro, padding: '8px 13px' }}>
           <i className="fas fa-dollar-sign"></i> {` ${cantidadmoney}`}
-          </div>
+        </div>
 
         <button onClick={mostrarCarrito} style={styles.carro}>
           <i className="fas fa-shopping-cart"></i>
@@ -64,7 +68,12 @@ export const Carrito = ({carrito, setearCarrito}) => {
 
         <button style={styles.carro} onClick={setearCarrito}><i className="fas fa-trash"> </i></button>
       </div>
+      </div>
+      }
+
     </div>
 
-  )
+    )
+
+
 }

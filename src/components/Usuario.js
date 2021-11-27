@@ -1,14 +1,14 @@
 import React, {useState, useContext} from 'react'
 import clienteAxios from '../config/axios'
 import Swal from 'sweetalert2'
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { CRMContext } from '../context/CRMContext';
 
 export const Usuario= () => {
 
   const [auth, guardarAuth] = useContext(CRMContext);
 
-  console.log(auth);
+  let navigate = useNavigate();
 
   const [usuario, setUsuario] = useState({
     name:'',
@@ -41,39 +41,12 @@ export const Usuario= () => {
           auth: true
         })
         console.log(auth);
+        navigate("/cafes", { replace: true });
         // props.guardarConsulta(true)
         // //redireccionar
         // props.history.push('/')
       })
     }
-  /*
-  console.log(producto);
-  const validarCliente = () => {
-    const {name, img, price} = producto
-
-    let valido = !name.length || !img.length || !price.length
-
-    return valido
-  }
-  const agregarProducto = e =>{
-     e.preventDefault();
-
-    clienteAxios.post('/usuario', producto)
-      .then(respuesta => {
-        console.log(respuesta)
-        Swal.fire(
-          'Se agrego el Producto',
-          'peticion exitosa',
-          'success'
-        )
-
-        // props.guardarConsulta(true)
-        // //redireccionar
-        // props.history.push('/')
-      })
-  }
-
-*/
 
 
 

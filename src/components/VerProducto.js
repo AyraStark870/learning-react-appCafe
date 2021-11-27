@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom'
 import { CRMContext } from '../context/CRMContext';
 import { BtnAdmin } from './BtnAdmin';
 import { BtnCard } from './BtnCard';
+import { useNavigate } from "react-router-dom";
+
+
 
 
 
@@ -33,6 +36,7 @@ const styles ={
 
 export const VerProducto= (props) => {
 
+  let navigate = useNavigate();
 
   const [auth, guardarAuth] = useContext(CRMContext);
   const rol = auth.rol
@@ -58,12 +62,37 @@ export const VerProducto= (props) => {
     consultarAPI()
   }, [])
 
-  const eliminarCliente = async (unid) => {
-    console.log(unid);
-    await clienteAxios.delete(`/cafes/${unid}`)
+  const eliminarCliente = id => {
+    console.log(id);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Un producto eliminado no se puede recuperar",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Eliminar',
+      cancelButtonText: 'No, Cancelar'
+    }).then((result) => {
+      if (result.value) {
+        // eliminar en la rest api
+        clienteAxios.delete(`/cafes/${id}`)
+          .then(res => {
+            if (res.status === 200) {
+              Swal.fire(
+                'Eliminado',
+                res.data.mensaje,
+                'success'
+              )
+              navigate("/cafes", { replace: true });
+            }
+          })
+      }
+    })
   }
 
   return (
+    <div>
     <div className='container'>
       <div style={styles.cardita}>
         <div>
@@ -74,14 +103,15 @@ export const VerProducto= (props) => {
 
           {/* <BtnCard  /> */}
 
+        </div>
+      </div>
+    </div>
           {rol ==='ADMIN_ROLE'
           ?
-           <BtnAdmin eliminarCliente={()=>eliminarCliente(id)} prod={prod}/>
+           <BtnAdmin id={id} eliminarCliente={()=>eliminarCliente(id)} prod={prod}/>
            :
            <button>jeje</button>
          }
-        </div>
-      </div>
     </div>
   )
 }

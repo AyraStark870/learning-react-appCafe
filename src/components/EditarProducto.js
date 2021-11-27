@@ -3,15 +3,17 @@ import clienteAxios from '../config/axios'
 import Swal from 'sweetalert2'
 import { useParams } from "react-router-dom";
 import { CRMContext } from '../context/CRMContext';
+import { useNavigate } from "react-router-dom";
 
 export const EditarProducto = (props) => {
-
+  let navigate = useNavigate()
   const [pagina, setPagina] = useState('Inicio')
 
  // console.log(auth);
 
   const params = useParams()
   const id = params.id
+  console.log(params);
 
   const [producto, datosProducto] = useState({
     name:'',
@@ -21,7 +23,7 @@ export const EditarProducto = (props) => {
 
   const consultarAPI = async() => {
     const clienteConsulta = await clienteAxios.get(`/cafes/${id}`)
-
+    console.log(clienteConsulta );
     datosProducto(clienteConsulta.data.cafe);
   }
   console.log(producto);
@@ -55,6 +57,7 @@ export const EditarProducto = (props) => {
       'peticion exitosa',
       'success'
     )
+    navigate("/cafes");
   }
 
 

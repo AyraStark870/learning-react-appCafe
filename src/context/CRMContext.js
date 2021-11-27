@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import { useCarritoCompras } from '../hooks/useCarrito'
 
 const CRMContext = React.createContext([ {}, () => {} ]);
+
+
+// const { aumentarCarrito,
+//     decrementarCarrito,
+//     carrito,
+//     setearCarrito } = useCarritoCompras()
 
 const CRMProvider = props => {
 
@@ -8,7 +15,7 @@ const CRMProvider = props => {
     const [auth, guardarAuth ] = useState({
         token: '',
         auth: false,
-        rol:''
+        rol: '',
     });
 
     return (

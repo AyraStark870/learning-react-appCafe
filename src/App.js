@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
  import { Pasteles} from './components/Pasteles';
 import { Navegacion } from './components/navegacion/Navegacion';
 // import { useFetch } from './hooks/useFetch';
-import { useCarritoCompras } from './hooks/useCarrito'
+ import { useCarritoCompras } from './hooks/useCarrito'
 import  {CrearProducto}  from './components/CrearProducto';
 import  {EditarProducto}  from './components/EditarProducto';
 import  {VerProducto}  from './components/VerProducto';
@@ -13,8 +13,23 @@ import { Usuario } from './components/Usuario';
 import { Login } from './components/Login';
 import {CRMContext, CRMProvider} from './context/CRMContext'
 
+const styles = {
+  div: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100 %',
+    maxWidth: '1400px',
+    height: 'auto',
+    margin:'auto',
+    border:'1px solid red'
+  },
+}
 function App() {
-  const [auth, guardarAuth ] = useContext(CRMContext)
+  const [auth, guardarAuth] = useContext(CRMContext)
 
 
 
@@ -31,7 +46,7 @@ function App() {
           <Navegacion carrito={carrito} setearCarrito={setearCarrito} />
 
 
-    <div >
+    <div style={styles.div}>
       <Routes>
         <Route path="/cafes" element={< Cafes aumentarCarrito={aumentarCarrito}
           decrementarCarrito={decrementarCarrito} carrito={carrito}/>} />

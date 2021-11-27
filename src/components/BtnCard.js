@@ -2,13 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useCarritoCompras } from '../hooks/useCarrito'
 
-export const BtnCard = () => {
-  let cafe=4
-  let cantidad=9
-  const { aumentarCarrito,
-    decrementarCarrito,
-    carrito,
-    setearCarrito } = useCarritoCompras()
+export const BtnCard = ({aumentarCarrito,decrementarCarrito,carrito, cantidad, cafe}) => {
+
 
   return (
 

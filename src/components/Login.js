@@ -2,11 +2,13 @@ import React, {useState, useContext} from 'react'
 import clienteAxios from '../config/axios'
 import Swal from 'sweetalert2'
 import { CRMContext } from '../context/CRMContext';
+import { useNavigate } from "react-router-dom";
 
 export const Login= (props) => {
 
   const [auth, guardarAuth] = useContext(CRMContext);
 
+  let navigate = useNavigate();
 
   const [credenciales, setCredencial] = useState({
     password:'',
@@ -41,7 +43,7 @@ export const Login= (props) => {
           'peticion exitosa',
           'success'
         )
-
+        navigate("/cafes", { replace: true });
         // props.guardarConsulta(true)
         // //redireccionar
         // props.history.push('/')

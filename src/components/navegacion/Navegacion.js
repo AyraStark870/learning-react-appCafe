@@ -65,7 +65,7 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
 
   return (
     <>
-    {auth.auth &&
+
      <div>
       <div style={styles.div}>
         <nav style={styles.navbar}>
@@ -75,8 +75,8 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
             name='Usuario' onClick={cambiarPag} to="/">Ingresar</Link>
           <Link style={pagina === 'Cafes' ? styles.linkAct : styles.link}
             name='Cafes' onClick={cambiarPag} to="/cafes">Cafes</Link>
-          <Link style={pagina !== 'Pasteles' ? styles.link : styles.linkAct}
-            name='Pasteles' onClick={cambiarPag} to="/pasteles">Pasteles</Link>
+          {/* <Link style={pagina !== 'Pasteles' ? styles.link : styles.linkAct}
+            name='Pasteles' onClick={cambiarPag} to="/pasteles">Pasteles</Link> */}
         </nav>
       </div>
       <div style={styles.divCarrito}>
@@ -85,7 +85,7 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
 
        </div>
       </div>
-      }
+
     </>
 
   )

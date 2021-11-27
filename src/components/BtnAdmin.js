@@ -1,13 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export const BtnAdmin= ({eliminarCliente,prod}) => {
+const estilos={
+  mydiv:{
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  }
+}
+
+export const BtnAdmin= ({eliminarCliente,prod, id}) => {
   return (
-    <div>
+    <div style={estilos.mydiv}>
       {console.log(prod, eliminarCliente)}
-     jejeje
-       <button Link onClick={eliminarCliente}><i class='fas fa-trash'></i></button>
-      < Link to={`/producto/editar/${prod.id}`}><i class='fas fa-edit'></i></Link>
+
+        <button onClick={()=>eliminarCliente(id)}><i class='fas fa-trash'></i></button>
+
+      < Link to={`/producto/editar/${id}`}><i class='fas fa-edit'></i></Link>
       < Link to={`/producto/nuevo`}> <i class="fas fa-plus-square"></i></Link>
     </div>
   )
