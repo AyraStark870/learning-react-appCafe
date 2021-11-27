@@ -3,6 +3,7 @@ import {Link } from "react-router-dom";
 import React, { useState, useContext } from 'react'
 import { Carrito } from "./Carrito";
 import { CRMContext } from '../../context/CRMContext';
+import { useNavigate } from "react-router-dom";
 
 const styles = {
   div: {
@@ -53,11 +54,23 @@ const styles = {
 }
 
 export const Navegacion = ({ carrito, setearCarrito}) => {
+  let navigate = useNavigate();
+
   const [pagina, setPagina] = useState('Inicio')
 
   const [auth, guardarAuth] = useContext(CRMContext);
 
+  const cerrarSesion = () => {
+    // auth.auth = false y el token se remueve
+    guardarAuth({
+      token: '',
+      auth: false
+    });
 
+    localStorage.setItem('token', '');
+
+    navigate("/", { replace: true })
+  }
 
   const cambiarPag = (e) => {
     setPagina(e.target.name)
@@ -68,16 +81,38 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
 
      <div>
       <div style={styles.div}>
+
         <nav style={styles.navbar}>
           {/* <Link style={pagina !== 'Inicio' ? styles.link : styles.linkAct}
             name='Inicio' onClick={cambiarPag} to="/">Inicio</Link> */}
-          <Link style={pagina !== 'Usuario' ? styles.link : styles.linkAct}
-            name='Usuario' onClick={cambiarPag} to="/">Ingresar</Link>
+          {/* <Link style={pagina !== 'Usuario' ? styles.link : styles.linkAct}
+            name='Usuario' onClick={cambiarPag} to="/">Ingresar</Link> */}
           <Link style={pagina === 'Cafes' ? styles.linkAct : styles.link}
             name='Cafes' onClick={cambiarPag} to="/cafes">Cafes</Link>
-          {/* <Link style={pagina !== 'Pasteles' ? styles.link : styles.linkAct}
-            name='Pasteles' onClick={cambiarPag} to="/pasteles">Pasteles</Link> */}
+          <Link style={pagina === 'Pasteles' ? styles.linkAct : styles.link}
+            name='Pasteles' onClick={cambiarPag} to="/pasteles">Pasteles</Link>
+
         </nav>
+          {auth.auth ? (
+            <button
+              type="button"
+              className="btn btn-rojo"
+              onClick={cerrarSesion}
+            >
+              <i className="far fa-times-circle"></i>
+              Cerrar Sesión
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-rojo"
+                onClick={() => navigate("/", { replace: true })}
+            >
+
+              Iniciar Sesión
+            </button>
+          )}
+
       </div>
       <div style={styles.divCarrito}>
 

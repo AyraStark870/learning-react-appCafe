@@ -13,7 +13,8 @@ export const Card = ({ cafe, aumentarCarrito, decrementarCarrito, carrito}) => {
   const [auth, guardarAuth] = useContext(CRMContext);
 
 
-  let item = carrito.filter(x => x.id === cafe.id)
+  let item = carrito.filter(x => x.id === cafe._id)
+
   let itemObj = item[0]
   let cantidad;
   itemObj ? cantidad = itemObj.qty : cantidad = 0

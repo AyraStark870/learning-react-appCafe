@@ -56,7 +56,11 @@ function App() {
           <Route path="/producto/editar/:id" element={<EditarProducto />} />
           <Route path="/" element={<Usuario/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/producto/ver/:id" element={<VerProducto/>} />
+          <Route path="/producto/ver/:id" element={<VerProducto
+              aumentarCarrito={aumentarCarrito}
+              decrementarCarrito={decrementarCarrito} carrito={carrito}/> }
+
+          />
       </Routes>
     </div>
          </CRMProvider>

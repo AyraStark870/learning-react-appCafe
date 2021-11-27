@@ -9,26 +9,43 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
 
   let navigate = useNavigate()
   const [auth, guardarAuth] = useContext(CRMContext);
-  console.log( 'desde cafes',auth);
   const [cafes, setCafes] = useState([])
+
+  let y
+  const handleChange = ({ target }) => {
+    y = target.value;
+    let filtrado = cafes.filter(x => x.name.includes(y))
+    setCafes(filtrado);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // let filtrado = cafes.filter(x => x.name.includes(y))
+    // setCafes(filtrado);
+  }
 
 
 
   let source = axios.CancelToken.source()
+
   useEffect(() => {
-    if (auth.token !== '') {
+    if (true) {
       // Query a la API
       const consultarAPI = async () => {
         try {
           const respuesta= await clienteAxios.get('/cafes', {
-            headers: {
-              Authorization: `Bearer ${auth.token}`
-            },
+             headers: {
+               Authorization: `Bearer ${auth.token}`
+             },
             cancelToken:source.token
           })
 
-              let cafes = respuesta.data.cafes.map(x => {
+              let cafes1 = respuesta.data.cafes.map(x => {
                 return { img: x.img, name: x.name, price: Number(x.price), _id: x._id };
+              })
+              let cafes = cafes1.filter(x=>{
+                const {name} = x
+                console.log(name);
+                return  name.includes('cafe');
               })
               setCafes(cafes)
 
@@ -57,45 +74,8 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
 
 
 
-  // Si el state esta como false
-  if (!auth.auth) {
-    navigate("/",);
-  }
-/*
-  const consultarAPI = async () => {
-     await clienteAxios.get(`/cafes`,{
-       headers: {
-         Authorization:`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6I…TEyfQ.Tznnlv9FjLkECs_P9zJH-K63eXm9jRbopw2Me8dGXNM`
-       }
-     })
-      .then(respuesta => {
-        let cafes = respuesta.data.cafes.map(x => {
-          return { img: x.img, name: x.name, price: Number(x.price), _id: x._id };
-        })
-        setCafes(cafes)
-      }).catch(error=>{
-       console.log(error);
-        navigate("/", );
-      })
-  }
-  useEffect(() => {
-
-    consultarAPI()
-  }, [])
-console.log(cafes);
 
 
-  // const { state } = useFetch("https://api-cafe-tamales.herokuapp.com/api/cafes")
-
-  /*
-  let cafes = []
-  if (state.data) {
-    cafes = state.data.cafes.map(x => {
-      return { img: x.img, name: x.name, price: Number(x.price), id: x._id };
-    })
-  }
-
-*/
 let state =  {loading: false}
   return (
     <div >
@@ -107,6 +87,10 @@ let state =  {loading: false}
         </div>)
       :
       (
+        <>
+          <form onSubmit={handleSubmit}>
+      <input type="text" onChange={handleChange} />
+    </form>
         <div className='container'>
             {
               cafes.map(x => {
@@ -119,7 +103,7 @@ let state =  {loading: false}
               })
             }
        </div>
-
+            </>
       )
 
 

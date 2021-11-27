@@ -8,15 +8,6 @@ import { BtnAdmin } from './BtnAdmin';
 import { BtnCard } from './BtnCard';
 import { useNavigate } from "react-router-dom";
 
-
-
-
-
-
-
-
-
-
 const styles ={
     cardita : {
     display: "flex",
@@ -42,9 +33,6 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
   const rol = auth.rol
 
 
-
-  //obtener el id
-   // props.match
   const params = useParams()
   const id = params.id
   console.log(id);
@@ -52,7 +40,7 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
 
 
   const consultarAPI = async () => {
-    const clienteConsulta = await clienteAxios.get(`/cafes/${id}`)
+    const clienteConsulta = await clienteAxios.get(`/pasteles/${id}`)
     clienteConsulta.data.cafe.price = Number(clienteConsulta.data.cafe.price)
     setProd(clienteConsulta.data.cafe);
   }
