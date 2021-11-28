@@ -1,35 +1,29 @@
 import React, {useState, useEffect, useContext} from 'react'
-import clienteAxios from '../config/axios'
+import clienteAxios from '../../config/axios'
 import Swal from 'sweetalert2'
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom'
-import { CRMContext } from '../context/CRMContext';
+import { CRMContext } from '../../context/CRMContext';
 import { BtnAdmin } from './BtnAdmin';
 import { BtnCard } from './BtnCard';
 import { useNavigate } from "react-router-dom";
-
-
-
-
-
-
-
-
-
 
 const styles ={
     cardita : {
     display: "flex",
     alignItems: 'center',
     justifyContent:'center',
-    backgroundColor: 'white',
-    width: '400px',
+    width: '600px',
     height: '500px',
     borderRadius: '8px',
-    boxShadow: '0 2px 2px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
     textAlign: 'center',
-    margin: '20px',
-    transition: 'all 0.25s'
+    padding: '20px',
+  },
+  divPyD:{
+    display: "flex",
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 
 }
@@ -42,12 +36,9 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
   const rol = auth.rol
 
 
-
-  //obtener el id
-   // props.match
   const params = useParams()
   const id = params.id
-  console.log(id);
+  let autenticado = auth.auth
   const [prod, setProd] = useState({})
 
 
@@ -64,7 +55,6 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
   }, [])
 
   let item = carrito.filter(x => x.id === prod._id)
-  console.log(prod);
   let itemObj = item[0]
   let cantidad;
   itemObj ? cantidad = itemObj.qty : cantidad = 0
@@ -102,24 +92,30 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
     <div>
     <div className='container'>
       <div style={styles.cardita}>
-        <div>
-         <h3>{prod.name}</h3>
-         <p>{`$ ${prod.price}`}</p>
           <img src={prod.img} alt={prod.name}/>
+
+          <div style={styles.divPyD}>
+            <div style={{padding:'12px', textAlign:'left',maxWidth:'280px'}}>
+         <h5>{prod.name}</h5>
          <p>{ prod.desc}</p>
+            </div>
+            <div style={{ width: '100px' }}>
+              <p style={{ color: '#FF5403', fontWeight: '600'}}>{`$ ${prod.price}`}</p>
             {
-              cantidad === 0
+              cantidad === 0 && autenticado===true
                 ?
                 (
-                  <button onClick={() => aumentarCarrito(prod)}>pedir</button>
+                    <button className='pedirCardBtn'
+                    onClick={() => aumentarCarrito(prod)}>pedir</button>
                 )
                 :
                 (
-                  <BtnCard aumentarCarrito={aumentarCarrito} cafe={prod} cantidad={cantidad}
+                    <BtnCard style={{ width: '100px' }}
+                     aumentarCarrito={aumentarCarrito} cafe={prod} cantidad={cantidad}
                     decrementarCarrito={decrementarCarrito} carrito={carrito} />
                 )
             }
-
+            </div>
 
 
         </div>

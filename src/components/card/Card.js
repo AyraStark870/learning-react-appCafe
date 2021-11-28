@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import clienteAxios from '../config/axios'
-import { CRMContext } from '../context/CRMContext';
+import clienteAxios from '../../config/axios'
+import { CRMContext } from '../../context/CRMContext'
 import { BtnCard } from './BtnCard';
 
 
@@ -23,12 +23,15 @@ export const Card = ({ cafe, aumentarCarrito, decrementarCarrito, carrito}) => {
 
 
   return (
+    < Link style={{textDecoration:'none'}} to={`/producto/ver/${cafe._id}`}>
     <div className='card'>
-      <h2>{cafe.name}</h2>
       <img src={cafe.img} alt={cafe.name} />
+       <h3>{cafe.name}</h3>
+
        <p>${cafe.price}</p>
 
-       {
+
+       {/* {
          cantidad===0
          ?
          (
@@ -39,13 +42,13 @@ export const Card = ({ cafe, aumentarCarrito, decrementarCarrito, carrito}) => {
           <BtnCard aumentarCarrito={aumentarCarrito} decrementarCarrito={decrementarCarrito}
           carrito={carrito} cantidad={cantidad} cafe={cafe}/>
          )
-        }
-
-
-       < Link to={`/producto/ver/${cafe._id}`}><button>detalle</button></Link>
-
+        } */}
 
 
     </div>
+      </Link>
+
+
+
   )
 }

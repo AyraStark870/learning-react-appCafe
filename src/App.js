@@ -8,7 +8,7 @@ import { Navegacion } from './components/navegacion/Navegacion';
  import { useCarritoCompras } from './hooks/useCarrito'
 import  {CrearProducto}  from './components/CrearProducto';
 import  {EditarProducto}  from './components/EditarProducto';
-import  {VerProducto}  from './components/VerProducto';
+import  {VerProducto}  from './components/card/VerProducto';
 import { Usuario } from './components/Usuario';
 import { Login } from './components/Login';
 import {CRMContext, CRMProvider} from './context/CRMContext'
@@ -22,7 +22,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     width: '100 %',
-    maxWidth: '1400px',
+    maxWidth: '1600px',
     height: 'auto',
     margin:'auto',
     border:'1px solid red'
@@ -37,6 +37,8 @@ function App() {
           decrementarCarrito,
           carrito,
           setearCarrito } = useCarritoCompras()
+
+let consulta;
 
   return (
     <>

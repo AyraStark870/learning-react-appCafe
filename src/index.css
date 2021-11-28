@@ -4,42 +4,83 @@
 }
 body{
   margin: 0;
-  background-color: #EEEBDD;
+  background-color: whitw;
 }
 h1{
     text-align: center;
     color: #E45826;
 }
+h3{
+    text-align: left;
+    font-size: 19px;
+    color: #007185;
+}
+.active.NavLink{
+    color: #F3950D;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+
+  }
+.NavLink{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+}
+.NavLink:hover{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 700;
+}
 .card {
   display: flex;
-  align-items: center;
+  align-items: left;
   background-color: white;
-  width: 250px;
-  height: 360px;
-  border-radius: 8px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  width: 180px;
+  height: 260px;
+  border:none;
+  /* box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); */
   /* overflow: hidden; */
   text-align: center;
-  margin: 20px;
+  margin: 10px;
   transition: all 0.25s;
 
 
 }
 .card:hover{
   /* transform: translate(-15px); */
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+ /* // box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2); */
 }
 img{
-  width: 220px;
-  height: 180px;
+  width: 170px;
+  height: 150px;
+}
+.pedirCardBtn{
+  background-color: #FFD814;
+  border: 1px solid #FCD200;
+  border-radius: 9px;
+  padding: 2 auto;
+  font-size: 17px;
+  margin: 3px;
+}
+.btn-rojo{
+  color: #e1e1e1;
+  font-size: 20px;
+  border: 1px solid white;
+}
+.btn-rojo:hover{
+ color: #FCD200;
+  border: 1px solid #FCD200;
 }
 .card p{
    padding: 0 !important;
    margin-bottom: 10px !important;
-   font-size: 160px;
+   text-align: left;
    font-weight: 400;
    font-size: 20px;
-   color: #A9333A;
+   color: black;
 }
 .card h2{
    margin-top: 15px;
@@ -50,7 +91,7 @@ img{
 }
 .container{
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   height: auto;
   display: flex;
   flex-direction: row;
@@ -59,14 +100,7 @@ img{
   margin: auto;
 
 }
-.money{
-  color: #206A5D;
-  font-family:  Helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 25px!important;
-  margin-right: 1px;
-  display: inline;
-}
+
 btn{
   border-radius: 6px;
   border: none;
@@ -132,4 +166,36 @@ form .campo input[readonly] {
     padding: .5rem 2rem;
     display: flex;
     justify-content: flex-end;
+}
+
+/*CURSO JUAN*/
+.btn i {
+    margin-right: 1rem;
+}
+.btn-azul {
+    background-color: var(--azul);
+}
+.btn-rojo {
+    background-color: var(--rojo);
+}
+.btn-naranja {
+    background-color: var(--naranja);
+}
+.btn-amarillo {
+    background-color: var(--amarillo);
+}
+.btn-verde {
+    background-color: var(--verde);
+}
+.btn:disabled {
+    opacity: .4;
+}
+.nvo-cliente {
+    padding: 2rem 4rem;
+    width: auto;
+}
+.btn-eliminar {
+    margin-top: 1rem;
+    font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif;
+    font-weight: 900;
 }

@@ -16,17 +16,15 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#105652',
+    backgroundColor: '#0F1111',
     color: '#fff',
-    border: 'none',
-    borderRadius: '10px',
     cursor: 'pointer',
-    padding: '20px'
+    padding: '10px'
   },
   bubble: {
     position: 'relative',
-    left: 69,
-    top: 58
+    left: 72,
+    top: -9
   },
 
 }
@@ -50,11 +48,11 @@ export const Carrito = ({carrito, setearCarrito}) => {
     <div >
       {auth.auth &&
         <div style={styles.tieso}>
-        { cantidadItems > 0 &&
+
+      <div style={styles.div} >
         <span style={styles.bubble}>
           <BubbleAlert cantidadItems={cantidadItems} />
-        </span>}
-      <div style={styles.div} >
+        </span>
 
 
         <div style={{ ...styles.carro, padding: '8px 13px' }}>

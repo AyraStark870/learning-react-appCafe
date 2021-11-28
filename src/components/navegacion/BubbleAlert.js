@@ -2,11 +2,12 @@ import React from 'react'
 
 const styles = {
   bubbleAlert:{
-    backgroundColor:'#B91646',
+    backgroundColor:'#0F1111',
     borderRadius:'15px',
-    color:'#fff',
-    padding:'2px 10px',
-    width:'25px'
+    color:'#F3950D',
+    //padding:'2px 10px',
+
+    fontWeight:'700'
   }
 }
 export const BubbleAlert = ( {cantidadItems}) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext }from 'react'
 import { useFetch } from '../hooks/useFetch';
-import { Card } from './Card';
+import { Card } from './card/Card';
 import clienteAxios from '../config/axios'
 import { CRMContext } from '../context/CRMContext';
 import { useNavigate } from "react-router-dom";
@@ -10,17 +10,22 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
   let navigate = useNavigate()
   const [auth, guardarAuth] = useContext(CRMContext);
   const [cafes, setCafes] = useState([])
+  const [form, setForm] = useState('')
 
-  let y
+
   const handleChange = ({ target }) => {
-    y = target.value;
-    let filtrado = cafes.filter(x => x.name.includes(y))
+    // y = target.value;
+    // let filtrado = cafes.filter(x => x.name.includes(y))
+    setForm(target.value);
+    let filtrado = cafes.filter(x => x.name.includes(form))
     setCafes(filtrado);
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    // let filtrado = cafes.filter(x => x.name.includes(y))
-    // setCafes(filtrado);
+
+     let filtrado = cafes.filter(x => x.name.includes(form))
+    setCafes(filtrado);
   }
 
 
@@ -44,9 +49,9 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
               })
               let cafes = cafes1.filter(x=>{
                 const {name} = x
-                console.log(name);
                 return  name.includes('cafe');
               })
+
               setCafes(cafes)
 
         } catch (error) {

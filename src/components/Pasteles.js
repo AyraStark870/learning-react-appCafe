@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext }from 'react'
 import { useFetch } from '../hooks/useFetch';
-import { Card } from './Card';
+import { Card } from './card/Card';
 import clienteAxios from '../config/axios'
 import { CRMContext } from '../context/CRMContext';
 import { useNavigate } from "react-router-dom";

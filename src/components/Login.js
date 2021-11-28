@@ -29,13 +29,14 @@ export const Login= (props) => {
       .then(respuesta => {
         // extraer el token y colocarlo en localstorage
         const { token } = respuesta.data;
-        const { rolenv:rol } = respuesta.data;
-        console.log(token);
+        const { rolenv: rol, nombreenv:name } = respuesta.data;
+        console.log(respuesta.data);
         localStorage.setItem('token', token);
         guardarAuth({
           token,
           auth: true,
-          rol
+          rol,
+          name
         })
 
         Swal.fire(

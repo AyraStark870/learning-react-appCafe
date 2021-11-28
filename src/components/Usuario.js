@@ -34,11 +34,12 @@ export const Usuario= () => {
           'peticion exitosa',
           'success'
         )
-        const { token } = respuesta.data;
+        const { token, nombreenv:name } = respuesta.data;
         localStorage.setItem('token', token);
         guardarAuth({
           token,
-          auth: true
+          auth: true,
+          name
         })
         console.log(auth);
         navigate("/cafes", { replace: true });
