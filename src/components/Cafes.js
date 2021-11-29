@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext }from 'react'
-import { useFetch } from '../hooks/useFetch';
 import { Card } from './card/Card';
 import clienteAxios from '../config/axios'
 import { CRMContext } from '../context/CRMContext';
@@ -10,31 +9,27 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
   let navigate = useNavigate()
   const [auth, guardarAuth] = useContext(CRMContext);
   const [cafes, setCafes] = useState([])
+  const [cafeses, setCafeses] = useState([])
   const [form, setForm] = useState('')
-
+  const [loading, setLoading] = useState(true)
 
   const handleChange = ({ target }) => {
-    // y = target.value;
-    // let filtrado = cafes.filter(x => x.name.includes(y))
-    setForm(target.value);
-    let filtrado = cafes.filter(x => x.name.includes(form))
-    setCafes(filtrado);
+     filtrar(target.value);
   }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-     let filtrado = cafes.filter(x => x.name.includes(form))
-    setCafes(filtrado);
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = cafeses.filter((elemento) => {
+      if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setCafes(resultadosBusqueda);
   }
-
-
 
   let source = axios.CancelToken.source()
 
   useEffect(() => {
     if (true) {
-      // Query a la API
       const consultarAPI = async () => {
         try {
           const respuesta= await clienteAxios.get('/cafes', {
@@ -51,11 +46,11 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
                 const {name} = x
                 return  name.includes('cafe');
               })
-
               setCafes(cafes)
+              setCafeses(cafes)
+              setLoading(false)
 
         } catch (error) {
-          // Error con authorizacion
           if (error.response.status = 500) {
             navigate("/",);
           } else if(axios.isCancel(error)){
@@ -81,11 +76,11 @@ export const Cafes = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
 
 
 
-let state =  {loading: false}
+
   return (
     <div >
     {
-      state.loading
+      loading
       ?
         (<div className="alert alert-info text-center">
            Loading...
@@ -93,9 +88,11 @@ let state =  {loading: false}
       :
       (
         <>
-          <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} />
-    </form>
+          <div className='busqueda'>
+              <form >
+                <input type="text" onChange={handleChange} />
+              </form>
+          </div>
         <div className='container'>
             {
               cafes.map(x => {

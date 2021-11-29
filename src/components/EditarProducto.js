@@ -92,7 +92,7 @@ export const EditarProducto = (props) => {
         </div>
 
         <button className='cancelar' onClick={() => { navigate(`/producto/ver/${id}`)}}>
-          cancelar</button>
+          <i class="fas fa-ban"></i>  cancelar</button>
       </form>
 
     </>

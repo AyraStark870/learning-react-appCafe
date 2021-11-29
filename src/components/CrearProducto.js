@@ -63,8 +63,8 @@ export const CrearProducto = () => {
         <div >
           <input disabled={validarCliente()} type="submit" className="submit-form" value="Agregar"/>
         </div>
-        {/* <button className='cancelar' onClick={() => { navigate(`/producto`) }}>
-          cancelar</button> */}
+        <button className='cancelar' onClick={() => { navigate(`/`) }}>
+          cancelar</button>
 
       </form>
     </>

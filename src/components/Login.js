@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { CRMContext } from '../context/CRMContext';
 import { useNavigate } from "react-router-dom";
 
+
 export const Login= (props) => {
 
   const [auth, guardarAuth] = useContext(CRMContext);
@@ -39,15 +40,14 @@ export const Login= (props) => {
           name
         })
 
-        Swal.fire(
-          'login correcto',
-          'peticion exitosa',
-          'success'
-        )
         navigate("/cafes", { replace: true });
-        // props.guardarConsulta(true)
-        // //redireccionar
-        // props.history.push('/')
+      })
+      .catch(error => {
+        Swal.fire(
+        'login incorrecto',
+        'error de password o email',
+        'error'
+        )
       })
     }
 
@@ -80,13 +80,15 @@ const validarCliente = () =>{
           <input disabled={validarCliente()} type="submit" class="submit-form"
           value="Ingresar"/>
         </div>
-         <p>Eres nuevo ?</p>
+         <p>Eres nuevo?</p>
 
         <div className="enviar-form">
           <input type="submit" class="crear-form"
-            value="Crear tu propia cuenta" onClick={() => navigate("/", { replace: true })} />
+            value="Crear tu propia cuenta" onClick={() => navigate("/crear-cuenta", { replace: true })} />
         </div>
       </form>
+
+
 
     </div>
   )

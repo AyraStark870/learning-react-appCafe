@@ -88,7 +88,9 @@ const validarCliente = () =>{
         </div>
         <br />
          <div >
-          Ya tienes cuenta?  < Link className='sign' to={`/login`}> Sign in</Link>
+          Ya tienes cuenta?
+          < Link className='sign' to={`/login`}>
+               Sign in <i style={{fontSize:'9px'}}  class="fa fa-play"></i></Link>
          </div>
 
       </form>

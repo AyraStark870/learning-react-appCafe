@@ -9,15 +9,19 @@ import axios from 'axios'
 
 export const Pasteles = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(true)
 
-  let y
-  const handleChange = ({target}) =>{
-    y = target.value;
+  const handleChange = ({ target }) => {
+    filtrar(target.value);
   }
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    let filtrado = pasteles.filter(x=>x.name.includes(y))
-    setPasteles(filtrado);
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = pasteleses.filter((elemento) => {
+      if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
+      ) {
+        return elemento;
+      }
+    });
+    setPasteles(resultadosBusqueda);
   }
 
 
@@ -25,6 +29,7 @@ export const Pasteles = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
   const [auth, guardarAuth] = useContext(CRMContext);
   //console.log( 'desde cafes',auth);
   const [pasteles, setPasteles] = useState([])
+  const [pasteleses, setPasteleses] = useState([])
 
 
 
@@ -32,16 +37,16 @@ export const Pasteles = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
 
   useEffect(() => {
     if (true) {
-      // Query a la API
+
       const consultarAPI = async () => {
         try {
           const respuesta= await clienteAxios.get('/cafes', {
-            // headers: {
-            //   Authorization: `Bearer ${auth.token}`
-            // },
+            headers: {
+               Authorization: `Bearer ${auth.token}`
+             },
             cancelToken:source.token
           })
-              console.log(respuesta);
+
           let cafes1 = respuesta.data.cafes.map(x => {
             return { img: x.img, name: x.name, price: Number(x.price), _id: x._id };
           })
@@ -51,7 +56,8 @@ export const Pasteles = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
             return name.includes('pastel');
           })
               setPasteles(pastel)
-
+              setPasteleses(pastel)
+              setLoading(false)
         } catch (error) {
           // Error con authorizacion
           if (error.response.status = 500) {
@@ -74,11 +80,11 @@ export const Pasteles = ({  aumentarCarrito, decrementarCarrito, carrito}) => {
     // source.cancel()
     }, [pasteles]);
 
-let state =  {loading: false}
+
   return (
     <div >
     {
-      state.loading
+      loading
       ?
         (<div className="alert alert-info text-center">
            Loading...
@@ -86,9 +92,11 @@ let state =  {loading: false}
       :
       (
         <>
-   <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} />
-    </form>
+          <div className='busqueda'>
+              <form >
+                <input type="text" onChange={handleChange} />
+              </form>
+          </div>
         <div className='container'>
             {
               pasteles.map(x => {

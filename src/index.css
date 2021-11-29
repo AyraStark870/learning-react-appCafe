@@ -2,10 +2,7 @@
 *{
   font-family:Arial, Helvetica, sans-serif;
 }
-body{
-  margin: 0;
-  background-color: white;
-}
+
 h1{
     text-align: center;
     color: #E45826;
@@ -15,25 +12,19 @@ h3{
     font-size: 19px;
     color: #007185;
 }
-.active.NavLink{
-    color: #F3950D;
-    font-size: 20px;
-    text-decoration: none;
-    font-weight: 700;
 
-  }
-.NavLink{
+/* .NavLink{
     color: white;
     font-size: 20px;
     text-decoration: none;
     font-weight: 700;
-}
-.NavLink:hover{
+} */
+/* .NavLink:hover{
     color: white;
     font-size: 20px;
     text-decoration: none;
     font-weight: 700;
-}
+} */
 .card {
   display: flex;
   align-items: left;
@@ -61,17 +52,9 @@ img{
 
 }
 .pedirCardBtn:hover{
-   background-color: rgb(243, 149, 13);
+   background-color: #F3950D;
 }
-.btn-rojo{
-  color: #e1e1e1;
-  font-size: 17px;
-  border: 1px solid white;
-}
-.btn-rojo:hover{
- color: #FCD200;
-  border: 1px solid #FCD200;
-}
+
 .card p{
    padding: 0 !important;
    margin-bottom: 10px !important;
@@ -137,7 +120,12 @@ btn:hover{
   background-color: rgb(243, 149, 13);
   color: black;
 }
-
+.cancelar{
+  margin-top: 10px;
+  border: none ;
+  padding: 2px 9px;
+  font-size: 15px;
+}
 
 /*
 
@@ -174,8 +162,6 @@ form legend {
     font-weight: 700;
     text-align: center;
     display: block;
-    /* padding: 2rem;
-    margin-bottom: 2rem; */
 }
 
 form .campo {
@@ -210,16 +196,6 @@ form .campo input[readonly] {
     background-color: var(--rojo);
 }
 
-/*FORMULARIOS AMAZON*/
-.container-form{
-    margin: 50px;
-    padding: 18px;
-    width: 348px;
-    height: 379px;
-    border: 0.6px solid  #c5c2c2;
-    border-radius: 5px;
-
-}
 .container-form legend{
     margin-top: 0;
     padding-top: 15px;
@@ -266,19 +242,7 @@ form .campo input[readonly] {
     background: #FCD200;
 }
 
-.crear-form{
-    border: 1px solid  #999595;
-    color: #111;
-    border-radius: 4px;
-    margin: 10px auto;
-    padding: 5px 80px;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 14px
-}
-.crear-form:hover{
-background-color: #e4dfdf;
-}
+
 /*crear cuenta*/
 .form-user{
     margin: 50px;
@@ -305,12 +269,4 @@ background-color: #e4dfdf;
 }
 .submit-form-user:hover{
     background: #FCD200;;
-}
-.sign{
-  text-decoration: none;
-  color: #0066c0;
-}
-.sign:hover{
-  text-decoration: underline;
-  color: #f0c14b;
 }

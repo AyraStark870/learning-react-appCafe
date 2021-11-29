@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
  import { Cafes } from './components/Cafes';
  import { Pasteles} from './components/Pasteles';
-import { Navegacion } from './components/navegacion/Navegacion';
+ import { Inicio} from './components/Inicio';
+
 // import { useFetch } from './hooks/useFetch';
  import { useCarritoCompras } from './hooks/useCarrito'
 import  {CrearProducto}  from './components/CrearProducto';
@@ -12,6 +13,7 @@ import  {VerProducto}  from './components/card/VerProducto';
 import { Usuario } from './components/Usuario';
 import { Login } from './components/Login';
 import {CRMContext, CRMProvider} from './context/CRMContext'
+import { NavNueva } from "./components/navegacion/NavNueva";
 
 const styles = {
   div: {
@@ -22,7 +24,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     width: '100 %',
-    maxWidth: '1600px',
+   // maxWidth: '1600px',
     height: 'auto',
     margin:'auto',
   },
@@ -44,7 +46,8 @@ let consulta;
           <CRMProvider value={[auth, guardarAuth]}>
 
 
-          <Navegacion carrito={carrito} setearCarrito={setearCarrito} />
+          {/* <Navegacion carrito={carrito} setearCarrito={setearCarrito} /> */}
+          <NavNueva carrito={carrito} setearCarrito={setearCarrito} />
 
 
     <div style={styles.div}>
@@ -55,7 +58,8 @@ let consulta;
           decrementarCarrito={decrementarCarrito} carrito={carrito}/>} />
           <Route path="/producto/nuevo" element={<CrearProducto />} />
           <Route path="/producto/editar/:id" element={<EditarProducto />} />
-          <Route path="/" element={<Usuario/>} />
+          <Route path="/crear-cuenta" element={<Usuario/>} />
+          <Route path="/" element={<Inicio/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/producto/ver/:id" element={<VerProducto
               aumentarCarrito={aumentarCarrito}

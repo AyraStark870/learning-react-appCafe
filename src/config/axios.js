@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const clienteAxios = axios.create({
-  baseURL: 'http://localhost:8000/api'
+  baseURL: 'https://api-cafe-tamales.herokuapp.com/api'
 })
 
 export default clienteAxios;

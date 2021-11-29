@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const styles = {
   div: {
+
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -70,6 +71,7 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
 
   const cerrarSesion = () => {
     // auth.auth = false y el token se remueve
+    setearCarrito()
     guardarAuth({
       token: '',
       auth: false
@@ -90,6 +92,8 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
 
         <nav style={styles.navbar}>
 
+          <NavLink className='NavLink'
+            exact to="/crear-cuenta">Inicio</NavLink>
           <NavLink className='NavLink'
             exact to="/cafes">Cafes</NavLink>
           <NavLink className='NavLink'
@@ -117,9 +121,9 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
             <button
               type="button"
               className="btn-rojo"
-                onClick={() => navigate("/", { replace: true })}
+                onClick={() => navigate("/login", { replace: true })}
             >
-
+                <i class="fa fa-lock-open"></i>
               Iniciar Sesión
             </button>
           )}

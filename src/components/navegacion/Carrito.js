@@ -16,7 +16,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#0F1111',
+     backgroundColor: '#353636',
     color: '#fff',
     cursor: 'pointer',
     padding: '10px'

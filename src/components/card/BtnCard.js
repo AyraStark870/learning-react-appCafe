@@ -31,7 +31,7 @@ export const BtnCard = ({aumentarCarrito,decrementarCarrito,carrito, cantidad, c
           (
           <button className='pedirCardBtn'
            onClick={() =>{
-                            navigate("/")
+                            navigate("/login")
              Swal.fire(
                'debe iniciar sesion',
                'para ordenar',

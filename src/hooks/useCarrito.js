@@ -9,6 +9,7 @@ export const useCarritoCompras = () => {
 
   const setearCarrito = ()=>{
     setCarrito([])
+    console.log('setenado');
   }
 
   const aumentarCarrito=(product)=>{
