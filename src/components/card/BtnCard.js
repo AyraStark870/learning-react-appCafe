@@ -21,7 +21,7 @@ export const BtnCard = ({aumentarCarrito,decrementarCarrito,carrito, cantidad, c
                <div>
                  <button className='pedirCardBtn' onClick={() => aumentarCarrito(cafe)}>+</button>
                  <p style={{ display: 'inline' }}>
-                     {cantidad}: pz </p>
+                     {cantidad}:pz </p>
                  <button className='pedirCardBtn' onClick={() => decrementarCarrito(cafe)}>-</button>
 
                </div>

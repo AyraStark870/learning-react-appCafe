@@ -96,7 +96,7 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
 
           <div style={styles.divPyD}>
             <div style={{padding:'12px', textAlign:'left',maxWidth:'280px'}}>
-         <h5>{prod.name}</h5>
+              <h5 style={{ color:'#007185'}}>{prod.name}</h5>
          <p>{ prod.desc}</p>
             </div>
             <div style={{ width: '100px' }}>
@@ -123,9 +123,10 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
     </div>
           {rol ==='ADMIN_ROLE'
           ?
-           <BtnAdmin id={id} eliminarCliente={()=>eliminarCliente(id)} prod={prod}/>
-           :
-           null
+
+              <BtnAdmin id={id} eliminarCliente={()=>eliminarCliente(id)} prod={prod}/>
+         :
+              null
          }
     </div>
   )

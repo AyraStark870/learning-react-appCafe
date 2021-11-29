@@ -25,7 +25,6 @@ const styles = {
     maxWidth: '1600px',
     height: 'auto',
     margin:'auto',
-    border:'1px solid red'
   },
 }
 function App() {

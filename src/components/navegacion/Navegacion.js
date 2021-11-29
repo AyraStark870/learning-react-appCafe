@@ -116,7 +116,7 @@ export const Navegacion = ({ carrito, setearCarrito}) => {
           ) : (
             <button
               type="button"
-              className="btn btn-rojo"
+              className="btn-rojo"
                 onClick={() => navigate("/", { replace: true })}
             >
 

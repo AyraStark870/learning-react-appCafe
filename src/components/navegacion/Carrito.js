@@ -59,12 +59,12 @@ export const Carrito = ({carrito, setearCarrito}) => {
           <i className="fas fa-dollar-sign"></i> {` ${cantidadmoney}`}
         </div>
 
-        <button onClick={mostrarCarrito} style={styles.carro}>
+        <button className='carro' onClick={mostrarCarrito} style={styles.carro}>
           <i className="fas fa-shopping-cart"></i>
         </button>
         {carroVisible && <DetallesCarro carrito={carrito} />}
 
-        <button style={styles.carro} onClick={setearCarrito}><i className="fas fa-trash"> </i></button>
+        <button className='carro' style={styles.carro} onClick={setearCarrito}><i className="fas fa-trash"> </i></button>
       </div>
       </div>
       }

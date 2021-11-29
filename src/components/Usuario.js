@@ -60,34 +60,35 @@ const validarCliente = () =>{
 }
   return (
     <>
-      <form onSubmit={agregarUsuario}>
-        <legend>Llena todos los campos</legend>
+      <form className='form-user' onSubmit={agregarUsuario}>
+        <legend>Crear cuenta</legend>
 
-        <div className="campo">
-          <label>Nombre:</label>
+        <div className="campo-form">
+          <label >Nombre:</label>
           <input onChange={actualizarUser} type="text" placeholder="Nombre Completo"
            name="name"/>
         </div>
 
-        <div className="campo">
-          <label>Email</label>
+        <div className="campo-form">
+          <label >Email</label>
           <input onChange={actualizarUser} type="email" placeholder="email@email.com"
              name="email"/>
         </div>
 
-        <div className="campo">
-          <label>Precio:</label>
+        <div className="campo-form">
+          <label >Pasword:</label>
           <input onChange={actualizarUser} type="password" placeholder="********"
           name="password"/>
         </div>
 
-        <div className="enviar">
-          <input disabled={validarCliente()} type="submit" class="btn btn-azul"
+
+        <div className="">
+          <input disabled={validarCliente()} type="submit" class="submit-form-user"
           value="Crear Cuenta"/>
         </div>
         <br />
-         <div>
-          ya tienes cuenta?  < Link to={`/login`}> Sign in</Link>
+         <div >
+          Ya tienes cuenta?  < Link className='sign' to={`/login`}> Sign in</Link>
          </div>
 
       </form>

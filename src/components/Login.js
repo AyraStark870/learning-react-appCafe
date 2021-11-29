@@ -50,35 +50,6 @@ export const Login= (props) => {
         // props.history.push('/')
       })
     }
-  /*
-  console.log(producto);
-  const validarCliente = () => {
-    const {name, img, price} = producto
-
-    let valido = !name.length || !img.length || !price.length
-
-    return valido
-  }
-  const agregarProducto = e =>{
-     e.preventDefault();
-
-    clienteAxios.post('/usuario', producto)
-      .then(respuesta => {
-        console.log(respuesta)
-        Swal.fire(
-          'Se agrego el Producto',
-          'peticion exitosa',
-          'success'
-        )
-
-        // props.guardarConsulta(true)
-        // //redireccionar
-        // props.history.push('/')
-      })
-  }
-
-*/
-
 
 
 const validarCliente = () =>{
@@ -89,28 +60,34 @@ const validarCliente = () =>{
   return valido
 }
   return (
-    <>
-      <form onSubmit={logearUsuario}>
-        <legend>Login</legend>
+    <div  >
+      <form className='container-form' onSubmit={logearUsuario}>
+        <legend>Sign in</legend>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Email</label>
           <input onChange={actualizarUser} type="email" placeholder="email@email.com"
              name="email"/>
         </div>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Pasword:</label>
           <input onChange={actualizarUser} type="password" placeholder="********"
           name="password"/>
         </div>
 
-        <div className="enviar">
-          <input disabled={validarCliente()} type="submit" class="btn btn-azul"
+        <div className="enviar-form">
+          <input disabled={validarCliente()} type="submit" class="submit-form"
           value="Ingresar"/>
         </div>
+         <p>Eres nuevo ?</p>
 
+        <div className="enviar-form">
+          <input type="submit" class="crear-form"
+            value="Crear tu propia cuenta" onClick={() => navigate("/", { replace: true })} />
+        </div>
       </form>
-    </>
+
+    </div>
   )
 }

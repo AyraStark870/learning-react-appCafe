@@ -31,20 +31,6 @@ export const Card = ({ cafe, aumentarCarrito, decrementarCarrito, carrito}) => {
        <p>${cafe.price}</p>
 
 
-       {/* {
-         cantidad===0
-         ?
-         (
-            <button onClick={() => aumentarCarrito(cafe)}>pedir</button>
-         )
-         :
-         (
-          <BtnCard aumentarCarrito={aumentarCarrito} decrementarCarrito={decrementarCarrito}
-          carrito={carrito} cantidad={cantidad} cafe={cafe}/>
-         )
-        } */}
-
-
     </div>
       </Link>
 

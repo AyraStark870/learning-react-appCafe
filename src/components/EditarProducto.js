@@ -41,7 +41,7 @@ export const EditarProducto = (props) => {
       [target.name]:target.value
     })
   }
-  console.log(producto);
+
   const validarCliente = () => {
     const {name, img, price} = producto
 
@@ -65,33 +65,36 @@ export const EditarProducto = (props) => {
 
   return (
     <>
-      <form onSubmit={actualizarProducto}>
+      <form className='container-form' onSubmit={actualizarProducto}>
         <legend>editando</legend>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Nombre Producto:</label>
           <input onChange={actualizarState} type="text" placeholder="Nombre Producto"
              value={producto.name} name="name"/>
         </div>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Imagen </label>
           <input onChange={actualizarState} type="text" placeholder="Imagen url"
             value={producto.img} name="img"/>
         </div>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Precio:</label>
           <input onChange={actualizarState} type="text" placeholder="precio producto"
             value={producto.price}name="price"/>
         </div>
 
-        <div className="enviar">
-          <input disabled={validarCliente()} type="submit" class="btn btn-azul"
-          value="guardar cambios"/>
+        <div className="">
+          <input disabled={validarCliente()} type="submit" class="submit-form"
+          value="guardar"/>
         </div>
 
+        <button className='cancelar' onClick={() => { navigate(`/producto/ver/${id}`)}}>
+          cancelar</button>
       </form>
+
     </>
   )
 }

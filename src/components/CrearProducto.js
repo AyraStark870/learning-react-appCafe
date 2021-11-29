@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import clienteAxios from '../config/axios'
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 export const CrearProducto = () => {
-
+  let navigate = useNavigate()
   const [producto, setProducto] = useState({
     name:'',
     price:'',
@@ -34,37 +35,36 @@ export const CrearProducto = () => {
           'peticion exitosa',
           'success'
         )
-
-        // props.guardarConsulta(true)
-        // //redireccionar
-        // props.history.push('/')
+        document.querySelector('.container-form').reset()
       })
   }
 
 
   return (
     <>
-      <form onSubmit={agregarProducto}>
+      <form className='container-form' onSubmit={agregarProducto}>
         <legend>Llena todos los campos</legend>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Nombre Producto:</label>
           <input onChange={actualizarState} type="text" placeholder="Nombre Producto" name="name"/>
         </div>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Imagen </label>
           <input onChange={actualizarState} type="text" placeholder="Imagen url" name="img"/>
         </div>
 
-        <div className="campo">
+        <div className="campo-form">
           <label>Precio:</label>
           <input onChange={actualizarState} type="text" placeholder="precio producto" name="price"/>
         </div>
 
-        <div className="enviar">
-          <input disabled={validarCliente()} type="submit" class="btn btn-azul" value="Agregar Producto"/>
+        <div >
+          <input disabled={validarCliente()} type="submit" className="submit-form" value="Agregar"/>
         </div>
+        {/* <button className='cancelar' onClick={() => { navigate(`/producto`) }}>
+          cancelar</button> */}
 
       </form>
     </>
