@@ -1,0 +1,86 @@
+.card {
+  display: flex;
+  align-items: left;
+  background-color: white;
+  width: 180px;
+  height: 260px;
+  border: none;
+  text-align: center;
+  margin: 10px;
+  transition: all 0.25s;
+}
+
+img {
+  width: 170px;
+  height: 150px;
+}
+.pedirCardBtn {
+  background-color: #ffd814;
+  border: 1px solid #fcd200;
+  border-radius: 3px;
+  padding: 2 auto;
+  font-size: 17px;
+  margin: 3px;
+  font-weight: 600;
+}
+.pedirCardBtn:hover {
+  background-color: #f3950d;
+}
+
+.card p {
+  padding: 0 !important;
+  margin-bottom: 10px !important;
+  text-align: left;
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
+}
+.card h2 {
+  margin-top: 15px;
+  font-size: 25px;
+
+  margin-bottom: 10px !important;
+  color: #3f3351;
+}
+.container {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+btn {
+  border-radius: 6px;
+  border: none;
+  margin: 5px;
+  height: 30px;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: #3f3351;
+  /* padding: 10px; */
+  display: inline;
+  cursor: pointer;
+  color: #ffca03;
+  /* padding-bottom: 15px!important; */
+  transition: all 0.25s;
+}
+btn:hover {
+  color: black;
+  background-color: #ffbc97;
+}
+@media only screen and(max-width:620px) {
+  .card {
+    width: 130px;
+    height: 200px;
+          margin:2px;
+    img {
+      width: 120px;
+      height: 100px;
+    }
+
+  }
+}

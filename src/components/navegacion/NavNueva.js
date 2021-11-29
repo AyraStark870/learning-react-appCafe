@@ -51,7 +51,7 @@ console.log(showing);
           className={showing ? classNames({menu:true, show:true}) : 'menu'}>
 
           <NavLink className='NavLink'  onClick={() => setShow(!showing)}
-            exact to="/crear-cuenta">Inicio</NavLink>
+            exact to="/">Inicio</NavLink>
           <NavLink className='NavLink' onClick={() => setShow(!showing)}
             exact to="/cafes">Cafes</NavLink>
           <NavLink className='NavLink' onClick={() => setShow(!showing)}

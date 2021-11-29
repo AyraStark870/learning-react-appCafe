@@ -1,0 +1,46 @@
+.cardita{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  height: 500px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+   text-align: center;
+   padding: 20px;
+
+    // boxShadow: '',
+    // textAlign: 'center',
+    // padding: '20px',
+}
+
+@media only screen and(max-width:620px) {
+   .cardita{
+     width: 350px;
+     height: 400px;
+     flex-direction: column;
+        padding-top: 0;
+      margin-top: 0;
+    img{
+      padding-top: 0;
+      margin-top: 0;
+      width: 200px;
+      height: 150px;
+    }
+   }
+   p{
+     font-size: 12px;
+     margin-bottom: 0;
+   }
+   .divPy{
+     flex-direction: column;
+   }
+   h5{
+     font-size: 14px;
+   }
+}
+  .divPy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

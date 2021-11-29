@@ -91,10 +91,10 @@ export const VerProducto = ({ aumentarCarrito,carrito, decrementarCarrito,}) => 
   return (
     <div>
     <div className='container'>
-      <div style={styles.cardita}>
+      <div className='cardita' >
           <img src={prod.img} alt={prod.name}/>
 
-          <div style={styles.divPyD}>
+          <div className='divPy'>
             <div style={{padding:'12px', textAlign:'left',maxWidth:'280px'}}>
               <h5 style={{ color:'#007185'}}>{prod.name}</h5>
          <p>{ prod.desc}</p>
